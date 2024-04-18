@@ -269,7 +269,7 @@ button,
 [type=button],
 [type=reset],
 [type=submit] {
-  -webkit-appearance: button;
+appearance: button;
 }
 
 button:not(:disabled),
@@ -328,7 +328,7 @@ progress {
 
 [type=search] {
   outline-offset: -2px;
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 [type=search]::-webkit-search-decoration {
@@ -4376,6 +4376,18 @@ input[type=button].btn-block {
   min-height: 1px;
   padding: 1.25rem;
 }
+
+.card-body form {
+  position: relative;
+}
+
+.card-body form::before {
+  content: "Welcome to Evenue Management System!";
+  display: block;
+  text-align: center;
+  margin-bottom: 15px; /* Adjust the margin as needed */
+}
+
 
 .card-title {
   margin-bottom: 0.75rem;

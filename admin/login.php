@@ -96,6 +96,7 @@ div#login-right::before {
   				<div class="card-body">
   						
   					<form id="login-form" >
+						<p class="text-center">Welcome to Evenue Management System!</p>
   						<div class="form-group">
   							<label for="username" class="control-label">Username</label>
   							<input type="text" id="username" name="username" class="form-control">
