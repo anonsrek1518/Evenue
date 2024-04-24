@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php
+    // Start session and include database connection
     session_start();
     include('admin/db_connect.php');
     ob_start();
+        // Fetch system settings from the database
         $query = $conn->query("SELECT * FROM system_settings limit 1")->fetch_array();
          foreach ($query as $key => $value) {
+          // Store system settings in session variables
           if(!is_numeric($key))
             $_SESSION['system'][$key] = $value;
         }
     ob_end_flush();
+    // Include header file
     include('header.php');
-
-	
     ?>
 
     <style>
@@ -61,28 +63,32 @@
         <div class="toast-body text-white">
         </div>
       </div>
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
+                <!-- Brand -->
                 <a class="navbar-brand js-scroll-trigger" href="./"><?php echo $_SESSION['system']['name'] ?></a>
+                <!-- Toggle button -->
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <!-- Navbar content -->
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <!-- Navigation links -->
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=home">Home</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=venue">Venues</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about">About</a></li>
-                        
-                     
                     </ul>
                 </div>
             </div>
         </nav>
        
         <?php 
+        // Include page content based on the page parameter
         $page = isset($_GET['page']) ?$_GET['page'] : "home";
         include $page.'.php';
         ?>
        
-
+<!-- Modal for confirmation -->
 <div class="modal fade" id="confirm_modal" role='dialog'>
     <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
@@ -99,6 +105,7 @@
       </div>
     </div>
   </div>
+<!-- Modal for universal content -->
   <div class="modal fade" id="uni_modal" role='dialog'>
     <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
@@ -114,6 +121,7 @@
       </div>
     </div>
   </div>
+<!-- Modal for universal content on the right side -->
   <div class="modal fade" id="uni_modal_right" role='dialog'>
     <div class="modal-dialog modal-full-height  modal-md" role="document">
       <div class="modal-content">
@@ -128,6 +136,7 @@
       </div>
     </div>
   </div>
+<!-- Modal for viewing content -->
   <div class="modal fade" id="viewer_modal" role='dialog'>
     <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
@@ -136,7 +145,9 @@
       </div>
     </div>
   </div>
+<!-- Preloader -->
   <div id="preloader"></div>
+        <!-- Footer -->
         <footer class=" py-5">
             <div class="container">
                 <div class="row justify-content-center">
@@ -152,12 +163,13 @@
                     </div>
                     <div class="col-lg-4 mr-auto text-center">
                         <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
-                        <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
+                        <!-- Email link -->
                         <a class="d-block" href="mailto:<?php echo $_SESSION['system']['email'] ?>"><?php echo $_SESSION['system']['email'] ?></a>
                     </div>
                 </div>
             </div>
             <br>
+            <!-- Copyright information -->
             <div class="container"><div class="small text-center text-muted">Copyright © 2024 - <?php echo $_SESSION['system']['name'] ?> | <a href="https://www.sourcecodester.com/" target="_blank">Evenue FB page</a></div></div>
         </footer>
         
