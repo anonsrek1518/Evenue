@@ -36,7 +36,8 @@ flex-direction: inherit;
 }
 
 p.description {
-    color: white
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .event-list .banner {
     width: calc(40%)

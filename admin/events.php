@@ -1,4 +1,46 @@
-<?php include('db_connect.php');?>
+<?php include('db_connect.php');
+// Include database connection
+include 'C:\xampp\htdocs\Evenue\admin\db_connect.php';  
+
+// Function to filter events based on event types
+function filterEventTypes($eventType) {
+    global $conn; // Access the database connection object
+
+    // Fetch events from the database based on event type
+    $eventQuery = $conn->prepare("SELECT e.*,v.venue FROM events e INNER JOIN venue v ON v.id=e.venue_id WHERE e.type = ? ORDER BY e.id ASC");
+    $eventQuery->bind_param("i", $eventType);
+    $eventQuery->execute();
+    $eventResult = $eventQuery->get_result();
+
+    return $eventResult;
+}
+
+// Check if event type is set and filter events accordingly
+if(isset($_GET['event_type'])) {
+    $eventType = $_GET['event_type'];
+    $events = filterEventTypes($eventType);
+} else {
+    // Fetch all events if event type is not specified
+    $events = $conn->query("SELECT e.*,v.venue FROM events e INNER JOIN venue v ON v.id=e.venue_id ORDER BY e.id ASC");
+}
+
+?>
+
+<div class="container-fluid">
+    <!-- Filter button -->
+    <div class="row mb-4">
+        <div class="col-md-12 text-right">
+            <form method="get" action="">
+                <label for="event_type">Filter by Event Type:</label>
+                <select name="event_type" id="event_type">
+                    <option value="">All</option>
+                    <option value="1">Public Event</option>
+                    <option value="2">Private Event</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+    </div>
 
 <div class="container-fluid">
 	
