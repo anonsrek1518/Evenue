@@ -5,10 +5,10 @@ session_start();
 include('./db_connect.php');
 ob_start();
 if(!isset($_SESSION['system'])){
-	$system = $conn->query("SELECT * FROM system_settings limit 1")->fetch_array();
-	foreach($system as $k => $v){
-		$_SESSION['system'][$k] = $v;
-	}
+    $system = $conn->query("SELECT * FROM system_settings limit 1")->fetch_array();
+    foreach($system as $k => $v){
+        $_SESSION['system'][$k] = $v;
+    }
 }
 ob_end_flush();
 ?>
@@ -31,10 +31,8 @@ body, html {
 .bg-image {
   /* The image used */
   background-image: url('assets/uploads/<?php echo $_SESSION['system']['cover_img'] ?>');
-
   /* Full height */
   height: 100%; 
-
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
@@ -59,12 +57,10 @@ body, html {
 
 .logo {
   margin: auto;
-  font-size: 8rem;
-  background: white;
-  padding: .5em 0.7em;
-  border-radius: 50% 50%;
-  color: #000000b3;
-  z-index: 10;
+  width: 100px; /* Set the width of the square logo */
+  height: 100px; /* Set the height of the square logo */
+  border-radius: 10px; /* Adjust the border radius as needed */
+  margin-bottom: 20px; /* Add some margin below the logo */
 }
 
 </style>
@@ -73,6 +69,8 @@ body, html {
   <div class="bg-image">
     <div class="login-container">
       <div class="login-form">
+        <!-- Square Logo -->
+        <img src="assets/img/logo.jpg" class="logo" alt="Logo">
         <form id="login-form">
           <p class="text-center">Welcome to Event Management System!</p>
           <div class="form-group">

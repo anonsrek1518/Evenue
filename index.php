@@ -59,28 +59,31 @@
     </style>
     <body id="page-top">
         <!-- Navigation-->
-        <div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-body text-white">
-        </div>
-      </div>
-        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container">
-                <!-- Brand -->
-                <a class="navbar-brand js-scroll-trigger" href="./"><?php echo $_SESSION['system']['name'] ?></a>
-                <!-- Toggle button -->
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <!-- Navbar content -->
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <!-- Navigation links -->
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=venue">Venues</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about">About</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand js-scroll-trigger" href="./">
+            <!-- Logo -->
+            <img src="assets/img/Evenue Logo.jpg" class="logo" alt="Logo" style="width: 50px; height: auto;">
+            <!-- Website Name -->
+            <?php echo $_SESSION['system']['name'] ?>
+        </a>
+        <!-- Toggle button -->
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar content -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <!-- Navigation links -->
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=home">Home</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=venue">Venues</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
        
         <?php 
         // Include page content based on the page parameter
